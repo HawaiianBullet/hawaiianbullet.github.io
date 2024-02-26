@@ -12,6 +12,7 @@ async function getWalletAccounts(rdns: string) {
       method: "eth_requestAccounts",
     });
   } catch (e) {
+    console.error("Error", { e });
     accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
