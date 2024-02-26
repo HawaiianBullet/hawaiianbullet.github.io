@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { createStore } from "mipd";
 
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
+
 async function getWalletAccounts(rdns: string) {
   console.log({ rdns });
   const store = createStore();
