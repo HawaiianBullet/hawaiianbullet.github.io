@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { createStore } from "mipd";
+import { UAParser } from "ua-parser-js";
 
 declare global {
   interface Window {
@@ -26,6 +27,16 @@ async function getWalletAccounts(rdns: string) {
   console.log({ accounts });
   alert(JSON.stringify(accounts));
 }
+
+const providers = ref();
+const browserInfo = ref();
+onMounted(() => {
+  const store = createStore();
+  providers.value = store.getProviders();
+
+  let parser = new UAParser(navigator.userAgent);
+  browserInfo.value = parser.getResult();
+});
 </script>
 
 <template>
@@ -38,6 +49,14 @@ async function getWalletAccounts(rdns: string) {
       </button>
       <button @click="getWalletAccounts('com.okex.wallet')">OKX</button>
     </div>
+
+    <h1 class="font-bold text-lg">Installed Providers</h1>
+    <div v-for="provider in providers" :key="provider.info.uuid">
+      <pre>{{ provider.info }}</pre>
+    </div>
+
+    <h1 class="font-bold text-lg">Browser Info</h1>
+    <pre>{{ browserInfo }}</pre>
   </div>
 </template>
 
