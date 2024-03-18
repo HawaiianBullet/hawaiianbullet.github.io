@@ -37,6 +37,14 @@ onMounted(() => {
   let parser = new UAParser(navigator.userAgent);
   browserInfo.value = parser.getResult();
 });
+
+function openTab1() {
+  window.open("https://www.boraportal.com/");
+}
+
+function openTab2() {
+  window.open("https://www.boraportal.com/", "_blank");
+}
 </script>
 
 <template>
@@ -59,6 +67,11 @@ onMounted(() => {
       <h1 class="font-bold text-lg">Browser Info</h1>
       <pre>{{ browserInfo }}</pre>
     </ClientOnly>
+
+    <div class="flex gap-5">
+      <button class="bg-red-300 p-2" @click="openTab1">Open Tab 1</button>
+      <button class="bg-blue-300 p-2" @click="openTab2">Open Tab 2</button>
+    </div>
   </div>
 </template>
 
