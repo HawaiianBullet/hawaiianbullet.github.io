@@ -12,6 +12,7 @@
     "@nuxt/content": "^2.8.5",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/ua-parser-js": "^0.7.39",
     "nuxt": "^3.8.0"
   },
   "dependencies": {

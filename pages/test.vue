@@ -50,13 +50,15 @@ onMounted(() => {
       <button @click="getWalletAccounts('com.okex.wallet')">OKX</button>
     </div>
 
-    <h1 class="font-bold text-lg">Installed Providers</h1>
-    <div v-for="provider in providers" :key="provider.info.uuid">
-      <pre>{{ provider.info }}</pre>
-    </div>
+    <ClientOnly>
+      <h1 class="font-bold text-lg">Installed Providers</h1>
+      <div v-for="provider in providers" :key="provider.info.uuid">
+        <pre>{{ provider.info }}</pre>
+      </div>
 
-    <h1 class="font-bold text-lg">Browser Info</h1>
-    <pre>{{ browserInfo }}</pre>
+      <h1 class="font-bold text-lg">Browser Info</h1>
+      <pre>{{ browserInfo }}</pre>
+    </ClientOnly>
   </div>
 </template>
 
